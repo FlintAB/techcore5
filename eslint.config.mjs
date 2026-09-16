@@ -62,6 +62,33 @@ export default tseslint.config(
       ],
       'import/no-default-export': 'error',
       'import/no-cycle': ['error', { maxDepth: 3 }],
+      'import/no-restricted-paths': [
+  'error',
+  {
+    zones: [
+      {
+        target: './src/shared',
+        from: ['./src/entities', './src/features', './src/pages', './src/app'],
+        message: 'shared — нижний слой, он не знает о верхних. Вынеси общее в shared.',
+      },
+      {
+        target: './src/entities',
+        from: ['./src/features', './src/pages', './src/app'],
+        message: 'entities может зависеть только от shared.',
+      },
+      {
+        target: './src/features',
+        from: ['./src/pages', './src/app'],
+        message: 'features может зависеть только от entities и shared.',
+      },
+      {
+        target: './src/pages',
+        from: './src/app',
+        message: 'pages не может импортировать app.',
+      },
+    ],
+  },
+],
 
       'jsx-a11y/alt-text': 'error',
       'jsx-a11y/anchor-is-valid': 'error',
