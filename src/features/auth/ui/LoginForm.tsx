@@ -1,4 +1,5 @@
 import { zodResolver } from "@hookform/resolvers/zod"
+import { type SubmitEventHandler } from "react"
 import { useForm } from "react-hook-form"
 
 import { type LoginFormData, loginSchema } from "../model/login-schema"
@@ -32,9 +33,13 @@ export const LoginForm = ({ onSubmit }: LoginFormProps) => {
       }
    })
 
+   const handleFormSubmit: SubmitEventHandler<HTMLFormElement> = (event) => {
+      void submitForm((event))
+   }
+
    return (
-      // eslint-disable-next-line @typescript-eslint/no-misused-promises
-      <form onSubmit={submitForm} noValidate>
+
+      <form onSubmit={handleFormSubmit} noValidate>
          <div>
             <label htmlFor="username">Логин</label>
             <input {...register('username')} 
@@ -57,6 +62,8 @@ export const LoginForm = ({ onSubmit }: LoginFormProps) => {
             autoComplete="current-password" />
             {errors.password && <p id="password-error" role="alert">{errors.password.message}</p>}
          </div>
+
+         {errors.root && <p role="alert">{errors.root.message}</p>}
 
          <button type="submit" disabled={isSubmitting}>
             {isSubmitting ? 'Вход...' : 'Войти'}
