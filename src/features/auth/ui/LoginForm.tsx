@@ -17,7 +17,7 @@ export const LoginForm = ({ onSubmit }: LoginFormProps) => {
       resolver: zodResolver(loginSchema),
       mode: 'onTouched',
       defaultValues: {
-         email: '',
+         username: '',
          password: ''
       },
    })
@@ -36,15 +36,15 @@ export const LoginForm = ({ onSubmit }: LoginFormProps) => {
       // eslint-disable-next-line @typescript-eslint/no-misused-promises
       <form onSubmit={submitForm} noValidate>
          <div>
-            <label htmlFor="email">E-mail</label>
-            <input {...register('email')} 
-            id="email"
-            type="email"
-            placeholder="you@example.com"
-            aria-invalid={Boolean((errors.email))}
-            aria-describedby={errors.email ? "email-error" : undefined}
-            autoComplete="email" />
-            {errors.email && <p id="email-error" role="alert">{errors.email.message}</p>}
+            <label htmlFor="username">Логин</label>
+            <input {...register('username')} 
+            id="username"
+            type="text"
+            placeholder="emilys"
+            aria-invalid={Boolean((errors.username))}
+            aria-describedby={errors.username ? "username-error" : undefined}
+            autoComplete="username" />
+            {errors.username && <p id="username-error" role="alert">{errors.username.message}</p>}
          </div>
 
          <div>
