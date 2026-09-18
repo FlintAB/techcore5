@@ -12,3 +12,6 @@ export const selectUser = (state: AuthSliceState) =>
 
 export const selectIsAuthenticated = (state: AuthSliceState) =>
    state.auth.status === "authenticated";
+
+export const selectAccessToken = (state: AuthSliceState) =>
+   state.auth.accessToken;

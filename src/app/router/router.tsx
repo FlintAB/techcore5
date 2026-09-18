@@ -8,6 +8,8 @@ import { RouteErrorBoundary } from "@/shared/ui/route-error";
 
 import { RootLayout } from "../layouts/RootLayout";
 
+import { ProtectedRoute } from "./ProtectedRoute";
+
 const ProductsPage = lazy(() =>
    import("@/pages/products").then((m) => ({ default: m.ProductsPage }))
 );
@@ -22,21 +24,29 @@ export const router = createBrowserRouter([
       element: <LoginPage />,
       errorElement: <RouteErrorBoundary />,
    },
+   { 
+      path: "*", 
+      element: <NotFoundPage /> 
+   },
    {
-      element: <RootLayout />,
+      element: <ProtectedRoute />,
       children: [
-         { index: true, element: <Navigate to={ROUTES.products} replace />},
          {
-            path: ROUTES.products,
-            element: <ProductsPage />,
-            errorElement: <RouteErrorBoundary />,
-         },
-         {
-            path: ROUTES.productDetails,
-            element: <ProductDetailsPage />,
-            errorElement: <RouteErrorBoundary />,
-         },
-         { path: "*", element: <NotFoundPage /> },
-      ],
+            element: <RootLayout />,
+            children: [
+               { index: true, element: <Navigate to={ROUTES.products} replace />},
+               {
+                  path: ROUTES.products,
+                  element: <ProductsPage />,
+                  errorElement: <RouteErrorBoundary />,
+               },
+               {
+                  path: ROUTES.productDetails,
+                  element: <ProductDetailsPage />,
+                  errorElement: <RouteErrorBoundary />,
+               },
+            ]
+         }
+      ]
    },
 ]);
