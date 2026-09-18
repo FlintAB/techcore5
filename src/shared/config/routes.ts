@@ -4,4 +4,4 @@ export const ROUTES = {
    productDetails: '/products/:id',
 } as const
 
-export const buildProductDetailsPath = (productId: string): string => `/products/${productId}`
+export const buildProductDetailsPath = (productId: number): string => `/products/${productId}`

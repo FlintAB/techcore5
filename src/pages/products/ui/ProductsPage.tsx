@@ -1,5 +1,4 @@
-import { useGetProductsQuery } from "@/entities/product/api/product-api";
-import { ProductCard } from "@/entities/product/ui/ProductCard";
+import { useGetProductsQuery, ProductCard } from "@/entities/product";
 import { PageLoader } from "@/shared/ui/page-loader";
 
 export const ProductsPage = () => {
@@ -7,7 +6,7 @@ export const ProductsPage = () => {
 
    if (isLoading) return <PageLoader />
 
-   if (isError) return <p>Не удалось загрузить товары</p>
+   if (isError) return <p role="alert">Не удалось загрузить товары</p>
 
    if (!data?.length) {
       return (

@@ -1,6 +1,6 @@
 import { baseApi } from "@/shared/api";
 
-import { productsResponseSchema } from "../model/product-schema";
+import { productSchema, productsResponseSchema } from "../model/product-schema";
 import type { Product } from "../model/types";
 
 const productsAPI = baseApi.injectEndpoints({
@@ -17,8 +17,19 @@ const productsAPI = baseApi.injectEndpoints({
 
             return data.products
          }
-      })
+      }),
+
+      getProductById: builder.query<Product, number>({
+         query: (id) => ({
+            url: `/products/${id}`,
+            method: 'GET',
+         }),
+
+         transformResponse: (response: unknown): Product => {
+            return productSchema.parse(response)
+         }
+      }),
    })
 })
 
-export const { useGetProductsQuery } = productsAPI;
+export const { useGetProductsQuery, useGetProductByIdQuery } = productsAPI;
