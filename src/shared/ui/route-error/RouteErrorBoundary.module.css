@@ -1,0 +1,69 @@
+.container {
+   display: grid;
+   place-items: center;
+
+   width: 100%;
+   min-height: 100vh;
+   min-height: 100svh;
+   padding: var(--page-padding);
+}
+
+.card {
+   display: grid;
+   gap: 20px;
+
+   width: min(100%, 480px);
+   padding: clamp(24px, 6vw, 40px);
+
+   text-align: center;
+   background-color: var(--color-surface);
+   border: 1px solid var(--color-border);
+   border-radius: var(--border-radius);
+   box-shadow: 0 10px 30px rgba(31, 41, 55, 0.08);
+}
+
+.title {
+   margin: 0;
+
+   color: var(--color-text);
+   font-size: clamp(28px, 7vw, 36px);
+   line-height: 1.2;
+}
+
+.message {
+   margin: 0;
+
+   color: var(--color-text-secondary);
+   overflow-wrap: anywhere;
+}
+
+.reloadButton {
+   display: inline-flex;
+   align-items: center;
+   justify-content: center;
+   justify-self: center;
+
+   min-height: 44px;
+   padding: 10px 24px;
+
+   color: #ffffff;
+   font-weight: 600;
+   background-color: var(--color-primary);
+   border: 0;
+   border-radius: var(--border-radius);
+
+   transition:
+      background-color 150ms ease,
+      opacity 150ms ease;
+}
+
+.reloadButton:focus-visible {
+   outline: 3px solid rgba(37, 99, 235, 0.4);
+   outline-offset: 2px;
+}
+
+@media (hover: hover) {
+   .reloadButton:hover {
+      background-color: var(--color-primary-hover);
+   }
+}

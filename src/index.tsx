@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import { App } from '@/app/App';
 
 import { store } from './app/store/store';
+import '@/app/styles/index.css';
 
 const container = document.getElementById('root');
 

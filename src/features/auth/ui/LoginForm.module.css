@@ -1,0 +1,113 @@
+.form {
+   display: grid;
+   gap: 20px;
+
+   width: 100%;
+   padding: clamp(20px, 5vw, 32px);
+
+   background-color: var(--color-surface);
+   border: 1px solid var(--color-border);
+   border-radius: var(--border-radius);
+   box-shadow: 0 10px 30px rgba(31, 41, 55, 0.08);
+}
+
+.field {
+   display: grid;
+   gap: 8px;
+   min-width: 0;
+}
+
+.label {
+   color: var(--color-text);
+   font-size: 14px;
+   font-weight: 600;
+   line-height: 1.4;
+}
+
+.input {
+   width: 100%;
+   min-width: 0;
+   min-height: 44px;
+   padding: 10px 12px;
+
+   color: var(--color-text);
+   background-color: var(--color-surface);
+   border: 1px solid var(--color-border);
+   border-radius: var(--border-radius);
+
+   transition:
+      border-color 150ms ease,
+      box-shadow 150ms ease;
+}
+
+.input::placeholder {
+   color: var(--color-text-secondary);
+   opacity: 0.8;
+}
+
+.input:focus-visible {
+   border-color: var(--color-primary);
+   outline: 3px solid rgba(37, 99, 235, 0.2);
+   outline-offset: 1px;
+}
+
+.input[aria-invalid="true"] {
+   border-color: var(--color-error);
+}
+
+.input[aria-invalid="true"]:focus-visible {
+   outline-color: rgba(220, 38, 38, 0.2);
+}
+
+.error,
+.rootError {
+   margin: 0;
+
+   color: var(--color-error);
+   font-size: 14px;
+   line-height: 1.4;
+}
+
+.rootError {
+   padding: 10px 12px;
+
+   background-color: rgba(220, 38, 38, 0.08);
+   border: 1px solid rgba(220, 38, 38, 0.25);
+   border-radius: var(--border-radius);
+}
+
+.submitButton {
+   display: inline-flex;
+   align-items: center;
+   justify-content: center;
+
+   width: 100%;
+   min-height: 44px;
+   padding: 10px 20px;
+
+   color: #ffffff;
+   font-weight: 600;
+   background-color: var(--color-primary);
+   border: 0;
+   border-radius: var(--border-radius);
+
+   transition:
+      background-color 150ms ease,
+      opacity 150ms ease;
+}
+
+.submitButton:focus-visible {
+   outline: 3px solid rgba(37, 99, 235, 0.4);
+   outline-offset: 2px;
+}
+
+.submitButton:disabled {
+   cursor: not-allowed;
+   opacity: 0.6;
+}
+
+@media (hover: hover) {
+   .submitButton:not(:disabled):hover {
+      background-color: var(--color-primary-hover);
+   }
+}

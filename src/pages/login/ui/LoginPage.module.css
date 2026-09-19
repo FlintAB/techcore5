@@ -1,0 +1,35 @@
+.container {
+   display: grid;
+   place-items: center;
+
+   width: 100%;
+   min-height: 100vh;
+   min-height: 100svh;
+   padding: 24px 16px;
+}
+
+.content {
+   display: grid;
+   gap: 24px;
+
+   width: min(100%, 400px);
+}
+
+.title {
+   margin: 0;
+
+   font-size: clamp(28px, 8vw, 36px);
+   line-height: 1.2;
+   font-weight: 700;
+   color: var(--color-text);
+}
+
+@media (min-width: 1024px) {
+   .container {
+      padding: 40px;
+   }
+
+   .content {
+      gap: 32px;
+   }
+}

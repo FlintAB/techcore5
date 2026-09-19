@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom"
 import { LoginForm, type LoginFormData, signedIn, useLoginMutation } from "@/features/auth"
 import { ROUTES } from "@/shared/config/routes"
 
+import styles from './LoginPage.module.css'
+
 export const LoginPage = () => {
    const navigate = useNavigate()
    const dispatch = useDispatch();
@@ -17,9 +19,14 @@ export const LoginPage = () => {
    }
 
    return (
-      <main>
-         <h1>Вход</h1>
-         <LoginForm onSubmit={handleSubmit} />
+      <main className={styles.container}>
+         <section className={styles.content}>
+            <h1 id="login-title" className={styles.title}>
+               Вход
+            </h1>
+
+            <LoginForm onSubmit={handleSubmit} />
+         </section>
       </main>
    )
 }
